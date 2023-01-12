@@ -2,23 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 import pandas as pd
-from selenium.webdriver.chrome.options import Options
 
-options = Options()
-options.add_argument('--window-size=1920x1080')
-options.add_argument('--verbose')
-options.add_argument('--headless')  # if you want it headless
-options.add_argument('--no-sandbox')
-options.add_argument('--enable-automation')
-options.add_argument('--disable-gpu')
-
-display = Display(visible=0, size=(800, 600))
-display.start()
-
-options.BinaryLocation = '/usr/bin/chromium-browser'
-service = Service('/usr/bin/chromedriver')
-
-self.driver = webdriver.Chrome(service=service, options=options)
 
 navegador = webdriver.Chrome()   # indicando o navegador a ser usado
 navegador.get('https://www.google.com.br/')
@@ -35,6 +19,8 @@ cotacao_dolar = navegador.find_element(
     By.XPATH,
     '//*[@id="knowledge-currency__updatable-data-column"]/div[1]/div[2]/span[1]',
 ).get_attribute('data-value')
+
+navegador.get('https://www.google.com.br/')
 
 navegador.find_element(
     By.XPATH,
